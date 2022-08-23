@@ -15,7 +15,6 @@ class Usercontroller extends Controller
             'name'=>'required',
             'email'=>'required|email',
             'password'=>'required|min:4|confirmed',
-            'password_confirmation'=>'min:4',
             'device_name'=>'required'
         ]);
 
@@ -39,7 +38,8 @@ class Usercontroller extends Controller
            return response()->json([
                 'user'=>$user,
                 'token'=>$user->createToken('token')->plainTextToken,
-                'device_name'=>$user->device_name
+                'device_name'=>$user->device_name,
+                'message'=>'Login successfull !'
            ]);
         } else {
             return response()->json([
